@@ -1,0 +1,109 @@
+NAME
+
+    Jacode4e - jacode.pl-like program for enterprise
+
+SYNOPSIS
+
+    use FindBin;
+    use lib "$FindBin::Bin/lib";
+    use Jacode4e;
+    $return =
+    Jacode4e::convert(\$line, $OUTPUT_encoding, $INPUT_encoding [, { %option }]);
+
+ATTENTION
+
+    This software IS NOT "jacode.pl"!
+    If you want "jacode.pl", search it on CPAN again.
+
+RAISON D'ETRE
+
+    This software has been developed for use promotion of JIS X 0213.
+
+    JIS X 0213 contains almost all of the characters used in everyday life in
+    Japan. In addition, JIS X 0213 was designed with consideration for use
+    in Shift_JIS environment. However, because it did not consider CP932 and
+    GAIJI, it is not very popular.
+
+    "JIS X 0213 bridge" needs last one meter.
+
+    To solve the problem, Jacode4e proposes CP932X [shi:pi:kju:san'nikai].
+
+    CP932X implements JIS X 0213 over CP932.
+
+    We can continue to use CP932 data, application programs, databases, and
+    networks using CP932X.
+
+    This software can convert the following encodings to each other.
+
+      mnemonic      means
+      -----------------------------------------------------------------------
+      cp932x        CP932X, Extended CP932 to JIS X 0213 using 0x9C5A as single shift
+      cp932         Microsoft CP932, IANA Windows-31J
+      cp932ibm      IBM CP932
+      cp932nec      NEC CP932
+      sjis2004      JISC Shift_JIS-2004
+      cp00930       IBM CP00930(CP00290+CP00300), CCSID 5026 katakana
+      keis78        HITACHI KEIS78
+      keis83        HITACHI KEIS83
+      keis90        HITACHI KEIS90
+      jef           FUJITSU JEF (12 point size for printing with option OUTPUT_SHIFTING)
+      jef9p         FUJITSU JEF ( 9 point size for printing with option OUTPUT_SHIFTING)
+      jipsj         NEC JIPS(J)
+      jipse         NEC JIPS(E)
+      letsj         UNISYS LetsJ
+      utf8          UTF-8.0 (aka UTF-8)
+      utf8.1        UTF-8.1
+      utf8jp        UTF-8-SPUA-JP, JIS X 0213 on SPUA ordered by JIS level, plane, row, cell
+    -----------------------------------------------------------------------
+
+    If you need round-trip conversion, you had better use Jacode4e::RoundTrip
+    module.
+
+WHAT IS "CP932X"?
+
+    * "cp932x" as mnemonic
+    * CP932X is CP932
+    * Pronounce [si: pi: nain thri: tu: kai] in English
+    * Pronounce [shi: pi: kju: san' ni kai] in Japanese
+    * [si: pi: nain thri: tu: iks] is reserved for Microsoft Corporation ;-P
+    * CP932 upper compatible
+    * Supports JIS X 0213 character set
+    * Used ghost character "\x9C\x5A" as single shift code
+    * Used "\x9C\x5A\x9C\x5A" for single "\x9C\x5A"
+    * You can use private use characters you made
+    * You can use your operating system, network, and database.
+    * In most cases, application programs can be used as it is.
+
+INSTALLATION
+
+   To test this software, type the following:
+
+   make test
+
+   To install this software, copy 'Jacode4e.pm' to any directory of @INC.
+
+DEPENDENCIES
+
+    This software requires perl 5.00503 or later.
+
+SEE ALSO
+
+    jcode.pl: Perl library for Japanese character code conversion, Kazumasa Utashiro
+    ftp://ftp.iij.ad.jp/pub/IIJ/dist/utashiro/perl/
+    http://web.archive.org/web/20090608090304/http://srekcah.org/jcode/
+    ftp://ftp.oreilly.co.jp/pcjp98/utashiro/
+    http://mail.pm.org/pipermail/tokyo-pm/2002-March/001319.html
+    https://twitter.com/uta46/status/11578906320
+
+    jacode - Perl program for Japanese character code conversion
+    https://metacpan.org/search?q=jacode.pl
+
+    Jacode4e - jacode.pl-like program for enterprise
+    https://metacpan.org/pod/Jacode4e
+
+    Jacode4e::RoundTrip - Jacode4e for round-trip conversion in JIS X 0213
+    https://metacpan.org/pod/Jacode4e::RoundTrip
+
+    Modern::Open - Autovivification, Autodie, and 3-args open support
+    https://metacpan.org/pod/Modern::Open
+
